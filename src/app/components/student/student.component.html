@@ -1,0 +1,39 @@
+<div>
+  <ul class="nav navbar-dark bg-dark">
+    <li class="nav-item">
+      <a class="nav-link active" href="#">List of Students</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Add Student</a>
+    </li>
+  </ul>
+</div>
+<div *ngIf="messageFromChild != null" class="alert alert-success" role="alert">
+  {{messageFromChild}}
+</div>
+<div div [hidden]="!isAdd" class="list" >
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let item of items| async">
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.nationality}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <span class="name">{{item.name}} </span>
+  <span class="age">{{item.age}}</span>
+  <span class="nationality">{{item.nationality}}</span> -->
+</div>
+<div [hidden]="isAdd">
+  <add-student (onAddedStudent)="onAddedStudent($event)"></add-student>
+</div>
+<button class="btn btn-secondary" (click)="toggleAdd()"> Toggle</button>
+
