@@ -1,6 +1,6 @@
 
 export interface IStudent {
   name: string;
-  age : number;
-  nationality:string;
+  age: number;
+  nationality: string;
 };

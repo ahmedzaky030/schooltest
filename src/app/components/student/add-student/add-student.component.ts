@@ -16,6 +16,7 @@ export class AddStudentComponent implements OnInit {
   addStudentForm : FormGroup;
   constructor(private fb : FormBuilder ,private db:FirebaseServiceService) {
     this.addStudentForm = this.fb.group({
+      $key:'',
       name:'',
       age : '',
       nationality:''
@@ -26,12 +27,12 @@ export class AddStudentComponent implements OnInit {
   }
 
   addStudent(studentFrm: FormGroup): void {
-
     this.newStudent = {
       name: this.addStudentForm.controls.name.value,
       age: this.addStudentForm.controls.age.value,
       nationality: this.addStudentForm.controls.nationality.value
     };
+
     // Here must to add the new student in firebase and new collection
     this.db.addStudent(this.newStudent);
     this.onAddedStudent.emit( this.newStudent.name + ' has been added');

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -26,7 +26,8 @@ import {FirebaseServiceService} from '../app/services/firebaseService/firebase-s
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [ FirebaseServiceService ],
   bootstrap: [AppComponent]
