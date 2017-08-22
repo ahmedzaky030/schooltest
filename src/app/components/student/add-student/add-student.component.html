@@ -1,4 +1,5 @@
-
+<button (click)="BackToHome()" class="btn btn-primary">Back To Home</button>
+<hr/>
 <form (submit)="addStudent(addStudentForm)" [formGroup]="addStudentForm">
   <div class="form-group row">
     <label class="col-2 col-form-label">Name</label>
@@ -14,22 +15,3 @@
     <input type="submit" class="form-control col-3 btn btn-primary" value="Add Student">
   </div>
 </form>
-
-
-<!--
-<div class="container">
-  <form>
-    <div class="form-group row">
-      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-      <div class="col-sm-10">
-        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-      </div>
-    </div>
-    <div class="form-group row">
-      <div class="col-sm-10">
-        <button type="submit" class="btn btn-primary">Sign in</button>
-      </div>
-    </div>
-  </form>
-</div>
- -->

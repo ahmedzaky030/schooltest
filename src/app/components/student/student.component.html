@@ -1,60 +1,22 @@
 <div>
   <ul class="nav navbar-dark bg-dark">
     <li class="nav-item">
-      <a class="nav-link active" href="#">List of Students</a>
+      <a class="nav-link active" [routerLink]="['/studentList']" href="#">List of Students</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Add Student</a>
+      <a class="nav-link" [routerLink]="['/add']" href="#">Add Student</a>
     </li>
   </ul>
 </div>
-<div *ngIf="messageFromChild != null" class="alert alert-success" role="alert">
+<router-outlet></router-outlet>
+<!-- <div *ngIf="messageFromChild != null" class="alert alert-success" role="alert">
   {{messageFromChild}}
+</div> -->
+<div class="container">
+  <div class="jumbotron">
+    <h1>Welcome in Students Module Feature</h1>
+    <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser's viewport.</p>
+    <a class="btn btn-lg btn-primary" [routerLink]="['/studentList']" role="button">Go To Students List</a>
+  </div>
 </div>
-<div div [hidden]="!isAdd" class="list" >
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Firstname</th>
-        <th>Age</th>
-        <th>Nationality</th>
-      </tr>
-    </thead>
-    <tr *ngIf="isEdit">
-        <td><input class="form-control col-10" type="text" [(ngModel)]="selectedStudent.name" name="name"></td>
-        <td><input class="form-control col-10" type="text" [(ngModel)]="selectedStudent.age" name="name"></td>
-        <td><input class="form-control col-10" type="text" [(ngModel)]="selectedStudent.nationality" name="name"></td>
-        <td><button (click)="update(selectedStudent.$key)" type="button" class="btn btn-default btn-lg">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Save
-          </button></td>
-        <td><button (click)="cancel()" type="button" class="btn btn-default btn-lg">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Cancel
-          </button></td>
-
-      </tr>
-    <tbody *ngFor="let item of items| async">
-
-      <tr>
-        <td>{{item.name}}</td>
-        <td>{{item.age}}</td>
-        <td>{{item.nationality}} </td>
-
-        <td>
-            <button type="button" (click)="edit(item, item.$key)" class="btn btn-default btn-lg">
-                <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
-              </button>
-        </td>
-        <td>
-        <button (click)="remove(item.$key)" type="button" class="btn btn-default btn-lg">
-            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Remove
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<div [hidden]="isAdd">
-  <add-student (onAddedStudent)="onAddedStudent($event)"></add-student>
-</div>
-<button class="btn btn-secondary" (click)="toggleAdd()"> Toggle</button>
 

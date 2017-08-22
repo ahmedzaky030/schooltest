@@ -1,0 +1,44 @@
+<button (click)="BackToHome()" class="btn btn-primary">Back To Home</button>
+<<hr/>
+<div div class="list" >
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Firstname</th>
+        <th>Age</th>
+        <th>Nationality</th>
+      </tr>
+    </thead>
+    <tr *ngIf="isEdit">
+        <td><input class="form-control col-10" type="text" [(ngModel)]="selectedStudent.name" (keydown)="update(selectedStudent.$key ,$event)" name="name"></td>
+        <td><input class="form-control col-10" type="text" [(ngModel)]="selectedStudent.age" (keydown)="update(selectedStudent.$key ,$event)" name="name"></td>
+        <td><input class="form-control col-10" type="text" [(ngModel)]="selectedStudent.nationality" (keydown)="update(selectedStudent.$key , $event)" name="name"></td>
+        <td><button (click)="update(selectedStudent.$key)"  type="button" class="btn btn-default btn-lg">
+          <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+          </button></td>
+        <td><button (click)="cancel()" type="button" class="btn btn-default btn-lg">
+          <i class="fa fa-times" aria-hidden="true"></i> Cancel
+          </button></td>
+
+      </tr>
+    <tbody *ngFor="let item of items| async">
+
+      <tr>
+        <td>{{item.name}}</td>
+        <td>{{item.age}}</td>
+        <td>{{item.nationality}} </td>
+
+        <td>
+            <button type="button" (click)="edit(item, item.$key)" class="btn btn-default btn-lg">
+              <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+              </button>
+        </td>
+        <td>
+        <button (click)="remove(item.$key)" type="button" class="btn btn-default btn-lg">
+          <i class="fa fa-trash" aria-hidden="true"></i> Remove
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
