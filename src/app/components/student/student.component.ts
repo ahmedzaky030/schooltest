@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FirebaseServiceService } from '../../services/firebaseService/firebase-service.service';
 import { FirebaseListObservable , FirebaseObjectObservable} from 'angularfire2/database';
-import { IStudent } from '../../models/IStudent';
+import { IStudent } from '../student/models/IStudent';
 import {FormsModule} from '@angular/forms';
 import  'rxjs';
 

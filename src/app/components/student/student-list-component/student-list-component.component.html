@@ -16,9 +16,13 @@
         <td><button (click)="update(selectedStudent.$key)"  type="button" class="btn btn-default btn-lg">
           <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
           </button></td>
-        <td><button (click)="cancel()" type="button" class="btn btn-default btn-lg">
+        <td>
+          <button (click)="cancel()" type="button" class="btn btn-default btn-lg">
           <i class="fa fa-times" aria-hidden="true"></i> Cancel
-          </button></td>
+          </button>
+        </td>
+
+
 
       </tr>
     <tbody *ngFor="let item of items| async">
@@ -37,6 +41,11 @@
         <button (click)="remove(item.$key)" type="button" class="btn btn-default btn-lg">
           <i class="fa fa-trash" aria-hidden="true"></i> Remove
           </button>
+        </td>
+        <td>
+            <a  type="button" [routerLink]="['/students',item.$key]" class="btn btn-default btn-lg">
+             <i class="fa fa-times" aria-hidden="true"></i> Go To Details
+            </a>
         </td>
       </tr>
     </tbody>

@@ -4,5 +4,6 @@ import { PaymentsComponent } from '../app/components/payments/payments.component
 import { AppComponent } from './app.component';
 
 export const routes : Route [] = [
-  {path:'payments' , component:PaymentsComponent}
+  {path:'payments' , component:PaymentsComponent},
+  {path:'students' , component:StudentComponent}
 ]

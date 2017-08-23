@@ -1,0 +1,21 @@
+<button (click)="BackToHome()" class="btn btn-primary">Back To Home</button>
+<hr>
+
+<div class="form-group row col-6">
+  <label for="example-text-input" class="col-2 col-form-label">Name</label>
+  <div class="col-10">
+    <input class="form-control" type="text" [value]="student.name" readonly id="example-text-input">
+  </div>
+</div>
+<div class="form-group row col-6">
+  <label for="example-search-input" class="col-2 col-form-label">Age</label>
+  <div class="col-10">
+    <input class="form-control" type="number" [value]="student.age" readonly id="example-search-input">
+  </div>
+</div>
+<div class="form-group row col-6">
+  <label for="example-email-input" class="col-2 col-form-label">nationality</label>
+  <div class="col-10">
+    <input class="form-control" type="text" [value]="student.nationality" readonly id="example-email-input">
+  </div>
+</div>
