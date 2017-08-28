@@ -13,16 +13,16 @@ import  'rxjs';
 })
 export class StudentComponent implements OnInit {
   isAdd:boolean = false;
-  messageFromChild:string;
+  messageFromChild:string; // not used now
   isEdit =false;
   selectedStudent:IStudent;
 
   items: FirebaseListObservable<IStudent[]>;
   constructor(private fb:FirebaseServiceService){
-     this.items = this.fb.data;
+     this.items = this.fb.studentData;
   }
-  ngOnInit() {
 
+  ngOnInit() {
   }
 
   toggleAdd() : void{

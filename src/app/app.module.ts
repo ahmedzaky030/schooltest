@@ -5,6 +5,7 @@ import { ReactiveFormsModule , FormsModule } from '@angular/forms';
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
 
 import { StudentsModule } from '../app/components/student/students.module';
+import { PaymentsModule } from '../app/components/payments/payments.module';
 import { AppComponent } from './app.component';
 
 import { PaymentsComponent } from '../app/components/payments/payments.component';
@@ -17,7 +18,6 @@ import {FirebaseServiceService} from '../app/services/firebaseService/firebase-s
 @NgModule({
   declarations: [
     AppComponent,
-    PaymentsComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +26,9 @@ import {FirebaseServiceService} from '../app/services/firebaseService/firebase-s
     AngularFireDatabaseModule,
     ReactiveFormsModule,
     FormsModule,
-    StudentsModule
+    // Feature Modules
+    StudentsModule,
+    PaymentsModule
   ],
   providers: [ FirebaseServiceService ],
   bootstrap: [AppComponent]

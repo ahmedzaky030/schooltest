@@ -2,40 +2,62 @@ import { Injectable } from '@angular/core';
 import {AngularFireDatabase , FirebaseObjectObservable , FirebaseListObservable} from 'angularfire2/database';
 import { IStudent } from '../../components/student/models/IStudent';
 import 'rxjs';
+import { IPayment} from '../../components/payments/model/IPayment';
 @Injectable()
 export class FirebaseServiceService {
-  data:FirebaseListObservable<any>;
+  studentData:FirebaseListObservable<any>;
   object:any;
+  paymentsData:any;
 
   constructor( private af:AngularFireDatabase) {
-    this.data = this.af.list('https://shopping-cart-6b7ac.firebaseio.com');
+    this.studentData = this.af.list('https://shopping-cart-6b7ac.firebaseio.com/students');
+    this.paymentsData = this.af.list('https://shopping-cart-6b7ac.firebaseio.com/payments');
+
   }
 
 
   addStudent(student: IStudent) {
     if (student.name && student.age && student.nationality) {
-      this.data.push(student);
+      this.studentData.push(student);
     }
+
+
 
   }
 
   updateStudent(key:string, student:IStudent) {
-    this.data.update(key,student);
+    this.studentData.update(key,student);
   }
 
   deleteStudent(key:string) {
-    this.data.remove(key);
-    console.log("has been deleted successfully");
+    this.studentData.remove(key);
   }
 
   getStudentbyKey(key):  IStudent {
-    this.af.object('https://shopping-cart-6b7ac.firebaseio.com/' + key)
-    .subscribe(x => {console.log(x); console.log('next'); this.object = x; } , y => console.info(y) ,() => console.log('completed'));
-
-    console.log('inside the service');
-
+    this.af.object('https://shopping-cart-6b7ac.firebaseio.com/student/' + key)
+    .subscribe(x => { this.object = x; } , y => console.info(y) ,() => console.log('completed'));
     //this.data.find(x=> x.$key == key).subscribe(x => this.object = x);
-    console.log(this.object);
+    return this.object;
+  }
+
+  addPayment(payment:IPayment){
+    if(payment.userKey && payment.total){
+      this.paymentsData.push(payment);
+    }
+  }
+
+  deletePayment(key:string) {
+    this.paymentsData.remove(key);
+  }
+
+  updatePayment(key:string, payment:IPayment) {
+    this.paymentsData.update(key,payment);
+  }
+
+  getPaymentbyKey(key):  IPayment {
+    this.af.object('https://shopping-cart-6b7ac.firebaseio.com/payment/' + key)
+    .subscribe(x => { this.object = x; } , y => console.info(y) ,() => console.log('completed'));
+    //this.data.find(x=> x.$key == key).subscribe(x => this.object = x);
     return this.object;
   }
 

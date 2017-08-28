@@ -1,6 +1,21 @@
-<div class="submenu" >
- <ul>
-   <li><a>List of Payment</a></li>
-   <li><a> Add Paymeent </a></li>
- </ul>
+<div>
+  <ul class="nav navbar-dark bg-dark">
+    <li class="nav-item">
+      <a class="nav-link active" [routerLink]="['/payments/list']" href="#">List of Payments</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/payments/add']" href="#">Add Payments</a>
+    </li>
+  </ul>
+</div>
+<router-outlet></router-outlet>
+<!-- <div *ngIf="messageFromChild != null" class="alert alert-success" role="alert">
+  {{messageFromChild}}
+</div> -->
+<div class="container">
+  <div class="jumbotron">
+    <h1>Welcome to Payments Module Feature</h1>
+    <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser's viewport.</p>
+    <a class="btn btn-lg btn-primary" [routerLink]="['/students/list']" role="button">Go To Payments List</a>
+  </div>
 </div>

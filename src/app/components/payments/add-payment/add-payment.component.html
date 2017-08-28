@@ -1,0 +1,70 @@
+<form name="paymentForm" (submit)="submit(paymentForm)" [formGroup]="paymentForm">
+  <div class="row">
+    <div class="form-group col-md-4">
+        <label for="inputState" class="col-form-label">Class</label>
+        <select id="inputState" name="user" formControlName="userKey" class="form-control">
+          Choose
+          <option *ngFor="let student of listOfStudent | async" [value]="student.$key" >{{student.name}}</option>
+        </select>
+        <div class="alert alert-danger" role="alert" *ngIf="!paymentForm.get('userKey').valid && paymentForm.get('userKey').touched && !paymentForm.get('userKey').error.pattern">
+            Please Select Student
+        </div>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col">
+        <label for="inputState" class="col-form-label">Total</label>
+      <input type="text" class="form-control" name="total" (keyup)="calculate()" [(ngModel)]="total" formControlName="total" placeholder="Total">
+      <div class="alert alert-danger" role="alert" *ngIf="!paymentForm.get('total').valid && paymentForm.get('total').touched && paymentForm.get('total').hasError('notNumber')">
+          Please Enter Total
+
+      </div>
+      <!-- <div *ngIf="paymentForm.get('total').hasError('pattern')" >
+          Please Insert Number
+        </div> -->
+
+    </div>
+    <div class="col">
+      <label for="inputState" class="col-form-label">Half</label>
+      <input type="text" class="form-control" name="half" [(ngModel)]="half" formControlName="half" placeholder="Half">
+    </div>
+  </div>
+  <div class="row form-group">
+      <div class="col">
+          <label for="inputState" class="col-form-label">First Month</label>
+        <input type="text" class="form-control" name="firstP" [(ngModel)]="firstP" formControlName ="firstP" placeholder="">
+      </div>
+      <div class="col">
+        <label for="inputState" class="col-form-label">Second Month</label>
+        <input type="text" class="form-control" name="secP" [(ngModel)]="secP" formControlName ="secP" placeholder="">
+      </div>
+    </div>
+    <div class="row form-group">
+        <div class="col">
+          <label for="inputState" class="col-form-label">Third Month</label>
+          <input type="text" class="form-control" name="thirdP" [(ngModel)]="thirdP" formControlName ="thirdP" placeholder="">
+        </div>
+        <div class="col">
+          <label for="inputState" class="col-form-label">Fourth Month</label>
+          <input type="text" class="form-control" name="fourthP" [(ngModel)]="fourthP" formControlName ="fourthP" placeholder="">
+        </div>
+      </div>
+      <div class="row form-group">
+          <div class="col-6">
+              <label for="inputState" class="col-form-label">Fifth Month</label>
+            <input type="text" class="form-control" name="fifthP" [(ngModel)]="fifthP" formControlName ="fifthP" placeholder="">
+          </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+              <input type="submit" class="form-control btn btn-primary" [disabled]="!paymentForm.valid" name="submitForm" value="Submit">
+            </div>
+          </div>
+          Form is touched :{{paymentForm.touched}} <br/>
+          Form is valid : {{paymentForm.valid}} <br/>
+          Form is changed : {{ paymentForm.dirty}} <br/>
+          {{paymentForm.get('total').hasError('notNumber')}}
+
+
+
+</form>

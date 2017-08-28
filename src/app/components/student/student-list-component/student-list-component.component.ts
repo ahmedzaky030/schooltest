@@ -19,7 +19,7 @@ export class StudentListComponent implements OnInit {
   items: FirebaseListObservable<IStudent[]>;
   constructor(private fb:FirebaseServiceService ,
   private router:Router){
-     this.items = this.fb.data;
+     this.items = this.fb.studentData;
   }
   ngOnInit() {
   }

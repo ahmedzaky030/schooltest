@@ -21,11 +21,7 @@ export class StudentDetailComponent implements OnInit {
 
   ngOnInit() {
    let key = this.actRouted.snapshot.params['key'];
-   console.log(key);
    this.student = this.fb.getStudentbyKey(key);
-   console.log('detail');
-   console.log(this.student);
-
   }
 
   BackToHome(){
