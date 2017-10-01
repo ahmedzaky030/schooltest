@@ -1,0 +1,27 @@
+<form name="classForm" (submit)="submit(classForm)" [formGroup]="classForm">
+  <div class="row form-group">
+    <div class="col">
+      <label for="inputState" class="col-form-label">Class Name</label>
+      <input type="text" class="form-control" name="total" formControlName="classname"  placeholder="please enter class name">
+    </div>
+    <div class="col">
+      <label for="inputState" class="col-form-label">Total</label>
+      <input type="text" class="form-control" name="half"  formControlName="total"  placeholder="please enter total">
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col">
+      <label for="inputState" class="col-form-label">Type</label>
+      <select id="inputState" name="type" formControlName="type" class="form-control">
+          Choose
+          <option value="private">Private </option>
+          <option value="public"> Public </option>
+        </select>
+    </div>
+  </div>
+  <div class="row form-group">
+    <div class="col-2">
+      <input type="submit" class="form-control btn btn-primary" [disabled]="!classForm.valid" name="submitForm" value="Submit">
+    </div>
+  </div>
+</form>

@@ -3,7 +3,7 @@ import { FirebaseServiceService } from '../../services/firebaseService/firebase-
 import { FirebaseListObservable , FirebaseObjectObservable} from 'angularfire2/database';
 import { IStudent } from '../student/models/IStudent';
 import {FormsModule} from '@angular/forms';
-import  'rxjs';
+// import 'rxjs';
 
 
 @Component({
@@ -12,55 +12,48 @@ import  'rxjs';
   styleUrls: ['./student.component.css']
 })
 export class StudentComponent implements OnInit {
-  isAdd:boolean = false;
-  messageFromChild:string; // not used now
-  isEdit =false;
-  selectedStudent:IStudent;
+  isAdd = false;
+  messageFromChild: string; // not used now
+  isEdit = false;
+  selectedStudent: IStudent;
 
-  items: FirebaseListObservable<IStudent[]>;
-  constructor(private fb:FirebaseServiceService){
-     this.items = this.fb.studentData;
+  items: Array<IStudent>;
+  constructor(private fb: FirebaseServiceService) {
+     this.items = this.fb.students;
   }
 
   ngOnInit() {
   }
 
-  toggleAdd() : void{
+  toggleAdd(): void {
     this.isAdd =  !this.isAdd;
   }
 
-  onAddedStudent(message : string) {
+  onAddedStudent(message: string) {
     this.toggleAdd();
     this.messageFromChild = message;
   }
 
 
-  remove(key:string){
+  remove(key: string) {
     this.fb.deleteStudent(key);
   }
 
-  update(key){
-    if(this.selectedStudent && this.selectedStudent.name && this.selectedStudent.age && this.selectedStudent.nationality){
+  update(key) {
+    if (this.selectedStudent && this.selectedStudent.name && this.selectedStudent.age && this.selectedStudent.nationality) {
       this.fb.updateStudent(key , this.selectedStudent);
       this.selectedStudent = null;
       this.isEdit = false;
     }
   }
 
-  cancel(){
+  cancel() {
     this.isEdit = false;
     this.selectedStudent = null;
   }
 
-  edit(obj:IStudent,key: string) {
+  edit(obj: IStudent, key: string) {
     this.selectedStudent = obj;
     this.isEdit = true;
-    }
-
-
-
-
-
-
-
+  }
 }

@@ -3,66 +3,62 @@ import { FirebaseServiceService } from '../../../services/firebaseService/fireba
 import { FirebaseListObservable , FirebaseObjectObservable} from 'angularfire2/database';
 import { IStudent } from '../models/IStudent';
 import {FormsModule} from '@angular/forms';
-import {Router} from '@angular/router'
-import  'rxjs';
+import {Router} from '@angular/router';
+// import 'rxjs';
 @Component({
-  selector: 'student-list',
+  selector: 'app-student-list',
   templateUrl: './student-list-component.component.html',
   styleUrls: ['./student-list-component.component.css']
 })
 export class StudentListComponent implements OnInit {
-  isAdd:boolean = false;
-  messageFromChild:string;
-  isEdit =false;
-  selectedStudent:IStudent;
+  isAdd = false;
+  messageFromChild: string;
+  isEdit = false;
+  selectedStudent: IStudent;
 
-  items: FirebaseListObservable<IStudent[]>;
-  constructor(private fb:FirebaseServiceService ,
-  private router:Router){
-     this.items = this.fb.studentData;
+  items: Array<IStudent>;
+  constructor(private fb: FirebaseServiceService,
+  private router: Router) {
+     this.items = this.fb.students;
   }
   ngOnInit() {
   }
-  toggleAdd() : void{
+  toggleAdd(): void {
     this.isAdd =  !this.isAdd;
   }
 
-  onAddedStudent(message : string) {
+  onAddedStudent(message: string) {
     this.toggleAdd();
     this.messageFromChild = message;
   }
 
-  BackToHome(){
+  BackToHome() {
     this.router.navigate(['students']);
-
   }
 
-
-
-
-  remove(key:string){
+  remove(key: string) {
     this.fb.deleteStudent(key);
   }
 
-  update(key, event:KeyboardEvent){
-    if(event.keyCode !== 13)
+  update(key, event: KeyboardEvent ) {
+    if ( event != null && event.keyCode !== 13) {
       return;
+    }
 
-    if(this.selectedStudent && this.selectedStudent.name && this.selectedStudent.age && this.selectedStudent.nationality){
+    if (this.selectedStudent && this.selectedStudent.name && this.selectedStudent.age && this.selectedStudent.nationality) {
       this.fb.updateStudent(key , this.selectedStudent);
       this.selectedStudent = null;
       this.isEdit = false;
     }
   }
 
-  cancel(){
+  cancel() {
     this.isEdit = false;
     this.selectedStudent = null;
   }
 
-  edit(obj:IStudent,key: string) {
+  edit(obj: IStudent, key: string) {
     this.selectedStudent = obj;
     this.isEdit = true;
     }
-
 }

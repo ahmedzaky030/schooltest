@@ -6,6 +6,7 @@ import { Ng2BootstrapModule } from 'ngx-bootstrap';
 
 import { StudentsModule } from '../app/components/student/students.module';
 import { PaymentsModule } from '../app/components/payments/payments.module';
+import { ClassesModule } from '../app/components/classes/classes.module';
 import { AppComponent } from './app.component';
 
 import { PaymentsComponent } from '../app/components/payments/payments.component';
@@ -28,7 +29,8 @@ import {FirebaseServiceService} from '../app/services/firebaseService/firebase-s
     FormsModule,
     // Feature Modules
     StudentsModule,
-    PaymentsModule
+    PaymentsModule,
+    ClassesModule
   ],
   providers: [ FirebaseServiceService ],
   bootstrap: [AppComponent]

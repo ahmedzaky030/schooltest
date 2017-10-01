@@ -6,21 +6,21 @@ import { FirebaseServiceService } from '../../../services/firebaseService/fireba
 
 
 @Component({
-  selector: 'add-student',
+  selector: 'app-add-student',
   templateUrl: './add-student.component.html',
   styleUrls: ['./add-student.component.css'],
   providers : [FirebaseServiceService]
 })
 export class AddStudentComponent implements OnInit {
-  newStudent : IStudent;
+  newStudent: IStudent;
   @Output() onAddedStudent = new  EventEmitter<string>();
-  addStudentForm : FormGroup;
-  constructor(private fb : FormBuilder ,private db:FirebaseServiceService ,private router:Router ) {
+  addStudentForm: FormGroup;
+  constructor(private fb: FormBuilder, private db: FirebaseServiceService, private router: Router ) {
     this.addStudentForm = this.fb.group({
-      $key:'',
-      name:'',
+      $key: '',
+      name: '',
       age : '',
-      nationality:''
+      nationality: ''
     });
   }
 
@@ -41,18 +41,16 @@ export class AddStudentComponent implements OnInit {
 
   }
 
-  BackToHome(){
+  BackToHome() {
     this.router.navigate(['students']);
 
   }
 
-  setvalue() : void {
+  setvalue(): void {
     this.addStudentForm.patchValue({
-      name:'name',
-      age:0,
-      nationality:'world'
+      name: 'name',
+      age: 0,
+      nationality: 'world'
     });
   }
-
-
 }

@@ -10,7 +10,7 @@ describe('StudentComponent', () => {
   let component: StudentComponent;
   let fixture: ComponentFixture<StudentComponent>;
 
-  let mockFB:FirebaseServiceService;
+  // let mockFB: FirebaseServiceService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -22,9 +22,7 @@ describe('StudentComponent', () => {
         FormsModule,
         ReactiveFormsModule
       ],
-      providers: [
-        { useClass: FirebaseServiceService, useValue: mockFB }
-      ]
+      providers: [ ]
     })
       .compileComponents();
   }));
@@ -40,10 +38,10 @@ describe('StudentComponent', () => {
   });
 
   fit('should remove by calling FB', () => {
-    let key = 'abc';
-    //spyOn(fb, 'deleteStudent');
-    //component.remove(key);
-    //expect(fb.deleteStudent).toHaveBeenCalledWith(key);
+    const key = 'abc';
+    // spyOn(fb, 'deleteStudent');
+    // component.remove(key);
+    // expect(fb.deleteStudent).toHaveBeenCalledWith(key);
     expect('').toBe('or not to be');
   });
 

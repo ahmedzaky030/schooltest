@@ -12,11 +12,9 @@ import { AddPaymentComponent } from './add-payment/add-payment.component';
     ReactiveFormsModule,
     FormsModule,
     RouterModule.forChild([
-      {path:'payments/list', component : PaymentsComponent},
-      {path:'payments/add' , component: AddPaymentComponent}
-
+      {path: 'payments/list', component: PaymentsComponent},
+      {path: 'payments/add', component: AddPaymentComponent}
     ])
-
   ],
   declarations: [PaymentsComponent, AddPaymentComponent]
 })

@@ -1,0 +1,21 @@
+<div>
+  <ul class="nav navbar-dark bg-dark">
+    <li class="nav-item">
+      <a class="nav-link active" [routerLink]="['/classes/list']" href="#">List of Classes</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/classes/add']" href="#">Add Class</a>
+    </li>
+  </ul>
+</div>
+<router-outlet></router-outlet>
+<!-- <div *ngIf="messageFromChild != null" class="alert alert-success" role="alert">
+  {{messageFromChild}}
+</div> -->
+<div class="container">
+  <div class="jumbotron">
+    <h1>Welcome to Classes Module Feature</h1>
+    <p class="lead">This example is a quick exercise to illustrate how fixed to top navbar works. As you scroll, it will remain fixed to the top of your browser's viewport.</p>
+    <a class="btn btn-lg btn-primary" [routerLink]="['/classes/list']" role="button">Go To Classes List</a>
+  </div>
+</div>

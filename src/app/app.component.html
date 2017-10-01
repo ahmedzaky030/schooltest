@@ -26,20 +26,23 @@
       </div>
     </nav> -->
 
-
 <nav class="navbar">
 
-  <div class="menu" >
-    <ul >
-      <li >
-        <a [routerLink]="['/students']" >Students <span class="sr-only">(current)</span></a>
+  <div class="menu">
+    <ul>
+      <li>
+        <a [routerLink]="['']">Home</a>
       </li>
-      <li >
-        <a  [routerLink]="['/payments']">Payments</a>
+      <li>
+        <a [routerLink]="['/students']">Students <span class="sr-only">(current)</span></a>
       </li>
-      <li >
-        <a  [routerLink]="['']">Home</a>
+      <li>
+        <a [routerLink]="['/payments']">Payments</a>
       </li>
+      <li>
+        <a [routerLink]="['/classes']">Classes</a>
+      </li>
+
     </ul>
   </div>
 </nav>
